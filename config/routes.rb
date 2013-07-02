@@ -7,6 +7,7 @@ Ournote::Application.routes.draw do
   root 'welcome#index'
 
   resources :users
+  get '/login', to: 'users#login'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
