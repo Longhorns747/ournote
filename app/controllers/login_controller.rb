@@ -1,5 +1,6 @@
 class LoginController < ApplicationController
 	def create
+		reset_session
 		@user = User.find_by(username: params[:login][:username], password: params[:login][:password])
 
 		if(@user.nil?)
@@ -8,5 +9,10 @@ class LoginController < ApplicationController
 			session[:user_id] = @user.id
 			redirect_to @user
 		end
+	end
+
+	def destroy
+		reset_session
+		render 'index'
 	end
 end

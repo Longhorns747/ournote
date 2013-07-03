@@ -7,8 +7,9 @@ Ournote::Application.routes.draw do
   root 'login#index'
 
   resources :users
-  resources :login, only: [:create]
+  resources :login, only: [:create, :destroy]
   get '/login', to: 'login#index'
+  get '/logout', to: 'login#destroy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

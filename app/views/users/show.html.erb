@@ -6,5 +6,5 @@
 <p>
   <strong>School:</strong>
   <%= @user.school %>
-  <%= link_to 'Logout', '/login' %>
+  <%= link_to 'Logout', '/logout', data: { confirm: 'Are you sure?' } %>
 </p>
