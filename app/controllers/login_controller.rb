@@ -11,7 +11,7 @@ class LoginController < ApplicationController
 		end
 	end
 
-	def destroy
+	def logout
 		reset_session
 		render 'index'
 	end
