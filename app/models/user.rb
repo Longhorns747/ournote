@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	has_many :notes
+	
 	validates_presence_of :username
 	validates_presence_of :email
 	validates_presence_of :school

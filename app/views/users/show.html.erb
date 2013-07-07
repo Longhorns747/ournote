@@ -8,3 +8,15 @@
   <%= @user.school %>
   <%= link_to 'Logout', '/logout', data: { confirm: 'Are you sure?' } %>
 </p>
+
+<%= @user.notes.each do |note| %>
+	<p>
+		<%= note.class %>
+	</p>
+		<%= note.topic %>
+
+	<p>
+		<%= link_to 'Note', note.content.url %>
+<% end %>
+
+<%= render 'notes/new' %>

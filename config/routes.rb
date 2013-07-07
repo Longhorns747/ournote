@@ -6,7 +6,9 @@ Ournote::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'login#index'
 
-  resources :users
+  resources :users do
+    resources :notes
+  end
   resources :login, only: [:create]
   get '/login', to: 'login#index'
   get '/logout', to: 'login#logout'
