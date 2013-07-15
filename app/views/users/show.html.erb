@@ -1,0 +1,33 @@
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+ 
+<p>
+  <strong>School:</strong>
+  <%= @user.school %>
+  <%= link_to 'Logout', '/logout', data: { confirm: 'Are you sure?' } %>
+</p>
+
+<table>
+	<tr>
+		<th>Class Name</th>
+		<th>Topic</th>
+		<th>Note</th>
+	</tr>
+<% @user.notes.each do |note| %>
+	<tr>
+		<td>
+			<%= note.c_name %>
+		</td>
+		<td>
+			<%= note.topic %>
+		</td>
+		<td>
+			<%= link_to 'Note', note.content.url %>
+		</td>
+	</tr>
+<% end %>
+</table>
+
+<%= render 'notes/new' %>

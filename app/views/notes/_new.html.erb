@@ -1,0 +1,22 @@
+<h1>New Note</h1>
+
+<%= form_for([@user, @user.notes.build]) do |f| %>
+  <p>
+    <%= f.label :class %>
+    <%= f.text_field :c_name %>
+  </p>
+
+  <p>
+    <%= f.label :topic %>
+    <%= f.text_field :topic %>
+  </p>
+
+  <p>
+    <%= f.label :content %>
+    <%= f.file_field :content %>
+  </p>
+ 
+  <p>
+    <%= f.submit "Create Note!" %>
+  </p>
+<% end %>
