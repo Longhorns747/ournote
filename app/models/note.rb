@@ -11,7 +11,7 @@ class Note < ActiveRecord::Base
       :medium => "300x300>",
       :thumb => "100x100>" },
     :s3_credentials => {
-      :access_key_id => ENV['AWS_KEY'],
-      :secret_access_key => ENV['AWS_SECRET'] },
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'] },
     :s3_permissions => 'public-read'
 end

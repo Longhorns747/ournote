@@ -8,7 +8,7 @@ Ournote::Application.routes.draw do
   resources :users do
     resources :notes
   end
-
+  
   resources :login, only: [:create]
   get '/login', to: 'login#index'
   get '/logout', to: 'login#logout'

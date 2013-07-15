@@ -9,4 +9,5 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
+
 Ournote::Application.config.secret_key_base = 'f736422bd6246f140a3305e3e08589b191559b795614e0f6a2cf5af67d9fd6cb2685035d899aa178bb8ee0736412da5afb767902fd64627a45fc0fcbfa27fe85'
