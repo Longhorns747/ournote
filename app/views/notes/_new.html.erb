@@ -1,22 +1,29 @@
-<h1>New Note</h1>
+<h3 class="text-center">New Note</h3>
 
-<%= form_for([@user, @user.notes.build]) do |f| %>
-  <p>
-    <%= f.label :class %>
-    <%= f.text_field :c_name %>
-  </p>
+<table class="table">
+  <tr>
+    <th>Class Name</th>
+    <th>Topic</th>
+    <th colspan="2">Content</th>
+  </tr>
 
-  <p>
-    <%= f.label :topic %>
-    <%= f.text_field :topic %>
-  </p>
+  <tr>
+    <%= form_for([@user, @user.notes.build]) do |f| %>
+      <td>
+        <p class="text-center"><%= f.text_field :c_name %></p>
+      </td>
 
-  <p>
-    <%= f.label :content %>
-    <%= f.file_field :content %>
-  </p>
- 
-  <p>
-    <%= f.submit "Create Note!" %>
-  </p>
-<% end %>
+      <td>
+        <p class="text-center"><%= f.text_field :topic %></p>
+      </td>
+
+      <td>
+        <p class="text-center"><%= f.file_field :content %></p>
+      </td>
+     
+      <td>
+        <%= f.submit "Create Note!" %>
+      </td>
+    <% end %>
+  </tr>
+</table>

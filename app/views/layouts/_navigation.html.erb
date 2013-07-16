@@ -1,0 +1,11 @@
+<div class="navbar">
+    <a class="brand" href="#">Ournote</a>
+    <ul class="nav pull-right">
+      <% unless @user.nil? %>
+        <a class="brand" href="#"> <%= link_to @user.username, user_path(@user), :class => 'brand' %> </a>
+        <li>
+          <%= link_to 'Logout', '/logout', :class => 'brand', data: { confirm: 'Are you sure?' } %>
+        </li>
+      <% end %>
+    </ul>
+</div>

@@ -1,19 +1,11 @@
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-
-  <strong>School:</strong>
-  <%= @user.school %>
-  <%= link_to 'Logout', '/logout', data: { confirm: 'Are you sure?' } %>
-</p>
-
 <div class="notes">
 	<% if @user.notes.present? %>
-		<table>
+	<h2><p class="text-center">Your Notes</p></h2>
+		<table class="table table-bordered">
 			<tr>
 				<th>Class Name</th>
 				<th>Topic</th>
-				<th>Note</th>
+				<th colspan="3">Note</th>
 			</tr>
 		<% @user.notes.each do |note| %>
 			<tr>
@@ -24,7 +16,7 @@
 					<%= note.topic %>
 				</td>
 				<td>
-					<%= link_to 'Note', note.content.url %>
+					<%= link_to 'View', note.content.url %>
 				</td>
 				<td>
 					<%= link_to 'Edit', edit_user_note_path(note.user, note) %>
