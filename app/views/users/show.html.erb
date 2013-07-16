@@ -9,25 +9,34 @@
   <%= link_to 'Logout', '/logout', data: { confirm: 'Are you sure?' } %>
 </p>
 
-<table>
-	<tr>
-		<th>Class Name</th>
-		<th>Topic</th>
-		<th>Note</th>
-	</tr>
-<% @user.notes.each do |note| %>
-	<tr>
-		<td>
-			<%= note.c_name %>
-		</td>
-		<td>
-			<%= note.topic %>
-		</td>
-		<td>
-			<%= link_to 'Note', note.content.url %>
-		</td>
-	</tr>
-<% end %>
-</table>
+<div class="newNote">
+	<% if @user.notes.present? %>
+		<table>
+			<tr>
+				<th>Class Name</th>
+				<th>Topic</th>
+				<th>Note</th>
+			</tr>
+		<% @user.notes.each do |note| %>
+			<tr>
+				<td>
+					<%= note.c_name %>
+				</td>
+				<td>
+					<%= note.topic %>
+				</td>
+				<td>
+					<%= link_to 'Note', note.content.url %>
+				</td>
+				<td>
+					<%= link_to 'Delete', [note.user, note],
+		               method: :delete,
+		               data: { confirm: 'Are you sure?' } %>
+		        </td>
+			</tr>
+		<% end %>
+		</table>
+	<% end %>
+</div>
 
 <%= render 'notes/new' %>
