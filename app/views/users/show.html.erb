@@ -27,6 +27,9 @@
 					<%= link_to 'Note', note.content.url %>
 				</td>
 				<td>
+					<%= link_to 'Edit', edit_user_note_path(note.user, note) %>
+				</td>
+				<td>
 					<%= link_to 'Delete', [note.user, note],
 		               method: :delete,
 		               data: { confirm: 'Are you sure?' } %>

@@ -1,0 +1,22 @@
+<h1>Edit Note</h1>
+
+<%= form_for :note, url: user_note_path(@note.user.id, @note.id), method: :patch do |f| %>
+  <p>
+    <%= f.label :Class %>
+    <%= f.text_field :c_name %>
+  </p>
+
+  <p>
+    <%= f.label :topic %>
+    <%= f.text_field :topic %>
+  </p>
+
+  <p>
+    <%= f.label :content %>
+    <%= f.file_field :content %>
+  </p>
+ 
+  <p>
+    <%= f.submit "Edit Note!" %>
+  </p>
+<% end %>
