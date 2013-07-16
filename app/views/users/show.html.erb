@@ -1,15 +1,13 @@
 <p>
   <strong>Username:</strong>
   <%= @user.username %>
-</p>
- 
-<p>
+
   <strong>School:</strong>
   <%= @user.school %>
   <%= link_to 'Logout', '/logout', data: { confirm: 'Are you sure?' } %>
 </p>
 
-<div class="newNote">
+<div class="notes">
 	<% if @user.notes.present? %>
 		<table>
 			<tr>
