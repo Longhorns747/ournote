@@ -14,4 +14,7 @@ class Note < ActiveRecord::Base
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'] },
     :s3_permissions => 'public-read'
+
+    validates :content, :attachment_presence => true
+    validates_attachment_content_type :content, :content_type => ['image', 'text', 'application/pdf']
 end

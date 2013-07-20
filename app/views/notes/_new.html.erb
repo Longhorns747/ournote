@@ -1,5 +1,9 @@
 <h3 class="text-center">New Note</h3>
 
+<% if params['valid'].present? %>
+  <h4 class="text-center">Invalid File Type (images, text, or pdfs only)</h4>
+<% end %>
+
 <table class="table">
   <tr>
     <th>Class Name</th>
