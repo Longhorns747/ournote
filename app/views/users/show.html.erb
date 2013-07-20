@@ -16,12 +16,21 @@
 				<td>
 					<%= note.topic %>
 				</td>
+
 				<td>
-					<%= note.get_filedate %>
+					<% note.note_contents.each do |note_content| %>
+						| <%= note_content.get_filedate %>
+					<% end %>
+					|
 				</td>
+
 				<td>
-					<%= link_to 'View', note.content.url %>
+					<% note.note_contents.each do |note_content| %>
+						| <%= link_to note_content.content_file_name, note_content.content.url %>
+					<% end %>
+					|
 				</td>
+
 				<td>
 					<%= link_to 'Edit', edit_user_note_path(note.user, note) %>
 				</td>

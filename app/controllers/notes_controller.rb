@@ -9,12 +9,19 @@ class NotesController < ApplicationController
 
 	def create
 		@user = User.find(params[:user_id])
-		@note = @user.notes.create(params[:note].permit(:topic, :c_name, :content))
+		@note = @user.notes.build(params[:note].permit(:topic, :c_name))
 
 		if @note.valid?
-			redirect_to user_path(@user)
+			if NoteContent.new(params[:note].permit(:content)).valid?
+				@note.save
+				@note.note_contents.create(params[:note].permit(:content))
+				redirect_to user_path(@user)
+			else
+				redirect_to user_path(@user, :invalid => ['set'])
+			end
+
 		else
-			redirect_to user_path(@user, :valid => ['invalid'])
+			redirect_to user_path(@user, :invalid => ['set'])
 		end
 	end
 
@@ -29,7 +36,9 @@ class NotesController < ApplicationController
 	def update
 		@note = User.find(params[:user_id]).notes.find(params[:id])
  
-  		if @note.update(params[:note].permit(:topic, :c_name, :content))
+  		if @note.update(params[:note].permit(:topic, :c_name)) && 
+  			@note.note_contents.create(params[:note].permit(:content))
+
     		redirect_to @note.user
   		else
     		render 'edit'

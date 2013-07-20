@@ -1,7 +1,7 @@
 <h3 class="text-center">New Note</h3>
 
-<% if params['valid'].present? %>
-  <h4 class="text-center">Invalid File Type (images, text, or pdfs only)</h4>
+<% if params['invalid'].present? %>
+  <h4 class="text-center">Missing Info or Invalid File Type on your note (images, text, or pdfs only)!</h4>
 <% end %>
 
 <table class="table">
@@ -12,21 +12,21 @@
   </tr>
 
   <tr>
-    <%= form_for([@user, @user.notes.build]) do |f| %>
+    <%= form_for([@user, @user.notes.build]) do |note| %>
       <td>
-        <p class="text-center"><%= f.text_field :c_name %></p>
+        <p class="text-center"><%= note.text_field :c_name %></p>
       </td>
 
       <td>
-        <p class="text-center"><%= f.text_field :topic %></p>
+        <p class="text-center"><%= note.text_field :topic %></p>
       </td>
 
       <td>
-        <p class="text-center"><%= f.file_field :content %></p>
+        <p class="text-center"><%= note.file_field :content %></p>
       </td>
      
       <td>
-        <%= f.submit "Create Note!" %>
+        <%= note.submit "Create Note!" %>
       </td>
     <% end %>
   </tr>

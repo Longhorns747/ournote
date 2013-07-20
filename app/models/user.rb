@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	has_many :notes
+	has_many :notes, :dependent => :delete_all
 	
 	validates_presence_of :username
 	validates_presence_of :email
