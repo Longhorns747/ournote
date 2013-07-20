@@ -1,5 +1,7 @@
 require 'paperclip'
 
+require 'active_support/core_ext'
+
 class Note < ActiveRecord::Base
   belongs_to :user
 
@@ -17,4 +19,9 @@ class Note < ActiveRecord::Base
 
     validates :content, :attachment_presence => true
     validates_attachment_content_type :content, :content_type => ['image', 'text', 'application/pdf']
+
+    def get_filedate
+      return self.content_updated_at.to_date
+    end
+
 end
