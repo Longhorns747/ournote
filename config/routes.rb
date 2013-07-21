@@ -11,6 +11,7 @@ Ournote::Application.routes.draw do
 
   resources :notes do
     resources :notecontents
+    resources :topics
   end
   
   resources :login, only: [:create]

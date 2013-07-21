@@ -9,7 +9,13 @@ class NotesController < ApplicationController
 
 	def create
 		@user = User.find(params[:user_id])
-		@note = @user.notes.build(params[:note].permit(:topic, :c_name))
+		@note = @user.notes.build(params[:note].permit(:c_name))
+
+		topics = params[:note].permit(:topics)['topics'].split(',')
+
+		topics.each do |topic|
+			@note.topics.build(:topic => topic)
+		end
 
 		if @note.valid?
 			if NoteContent.new(params[:note].permit(:content)).valid?

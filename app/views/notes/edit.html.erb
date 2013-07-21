@@ -8,17 +8,20 @@
 
   <p>
     <%= note.label :topic %>
-    <%= note.text_field :topic %>
+    <%= note.text_field :topics %>
   </p>
 
-  <h3>Delete an existing file!</h3>
+  <% if @note.note_contents.length > 1%>
+    <h3>Delete an existing file!</h3>
 
-  <% @note.note_contents.each do |note_content| %>
-    | <%= link_to note_content.content_file_name, note_notecontent_path(@note, note_content),
-                   method: :delete,
-                   data: { confirm: 'Are you sure?' } %>
+    <% @note.note_contents.each do |note_content| %>
+        | <%= link_to note_content.content_file_name, note_notecontent_path(@note, note_content),
+                     method: :delete,
+                     data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    |
+    
   <% end %>
-  |
 
   <h3>Add a new file!</h3>
 
