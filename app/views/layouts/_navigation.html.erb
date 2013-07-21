@@ -1,5 +1,10 @@
 <div class="navbar">
-    <a class="brand" href="#">Ournote</a>
+	<% if session[:user_id].nil? %>
+		<a class="brand" href="#">Ournote</a>
+	<% else %>
+    	<a class="brand" href=<%= user_path(session[:user_id]) %>>Ournote</a>
+    <% end %>
+    
     <ul class="nav pull-right">
       <% unless @user.nil? %>
         <a class="brand" href="#"> <%= link_to @user.username, user_path(@user), :class => 'brand' %> </a>

@@ -36,12 +36,18 @@ class NotesController < ApplicationController
 	def update
 		@note = User.find(params[:user_id]).notes.find(params[:id])
  
-  		if @note.update(params[:note].permit(:topic, :c_name)) && 
-  			@note.note_contents.create(params[:note].permit(:content))
+  		if @note.update(params[:note].permit(:topic, :c_name))
 
-    		redirect_to @note.user
+  			note_content = @note.note_contents.build(params[:note].permit(:content))
+
+  			if note_content.save
+				redirect_to @note.user
+			else
+				redirect_to edit_user_note_path(@note.user, @note, :invalid => ['set'])
+			end
+
   		else
-    		render 'edit'
+    		redirect_to edit_user_note_path(@note.user, @note, :invalid => ['set'])
   		end
 	end
 end

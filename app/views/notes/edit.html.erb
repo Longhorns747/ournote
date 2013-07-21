@@ -1,24 +1,36 @@
 <h1>Edit Note</h1>
 
-<%= form_for :note, url: user_note_path(@note.user.id, @note.id), method: :patch do |f| %>
+<%= form_for :note, url: user_note_path(@note.user.id, @note.id), method: :patch do |note| %>
   <p>
-    <%= f.label :Class %>
-    <%= f.text_field :c_name %>
+    <%= note.label :Class %>
+    <%= note.text_field :c_name %>
   </p>
 
   <p>
-    <%= f.label :topic %>
-    <%= f.text_field :topic %>
+    <%= note.label :topic %>
+    <%= note.text_field :topic %>
   </p>
+
+  <h3>Delete an existing file!</h3>
+
+  <% @note.note_contents.each do |note_content| %>
+    | <%= link_to note_content.content_file_name, note_notecontent_path(@note, note_content),
+                   method: :delete,
+                   data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  |
 
   <h3>Add a new file!</h3>
 
+  <% if params[:invalid].present? %>
+    <h4>Invalid file type (images, text, or pdfs only)</h4>
+  <% end %>
+
   <p>
-    <%= f.label :content %>
-    <%= f.file_field :content %>
+    <%= note.file_field :content %>
   </p>
  
   <p>
-    <%= f.submit "Edit Note!" %>
+    <%= note.submit "Edit Note!" %>
   </p>
 <% end %>
