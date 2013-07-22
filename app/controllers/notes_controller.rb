@@ -14,7 +14,7 @@ class NotesController < ApplicationController
 		topics = params[:note].permit(:topics)['topics'].split(',')
 
 		topics.each do |topic|
-			@note.topics.build(:topic => topic)
+			@note.topics.build(:topic => topic.strip)
 		end
 
 		if @note.valid?
@@ -42,18 +42,26 @@ class NotesController < ApplicationController
 	def update
 		@note = User.find(params[:user_id]).notes.find(params[:id])
  
-  		if @note.update(params[:note].permit(:topic, :c_name))
+  		if @note.update(params[:note].permit(:c_name))
 
-  			note_content = @note.note_contents.build(params[:note].permit(:content))
+			topics = params[:note].permit(:topics)['topics'].split(',')
 
-  			if note_content.save
-				redirect_to @note.user
-			else
-				redirect_to edit_user_note_path(@note.user, @note, :invalid => ['set'])
+			topics.each do |topic|
+				@note.topics.create(:topic => topic.strip)
 			end
 
-  		else
-    		redirect_to edit_user_note_path(@note.user, @note, :invalid => ['set'])
+			note_content = @note.note_contents.build(params[:note].permit(:content))
+
+			if note_content.nil?
+	  			if note_content.valid?
+	  				note_content.save
+					redirect_to @note.user
+				else
+					redirect_to edit_user_note_path(@note.user, @note, :invalid => ['set'])
+				end
+			else
+				redirect_to @note.user
+			end
   		end
 	end
 end

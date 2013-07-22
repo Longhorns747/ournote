@@ -7,9 +7,20 @@
   </p>
 
   <p>
-    <%= note.label :topic %>
-    <%= note.text_field :topics %>
+    Add more topics! (separate with commas)
   </p>
+  <input id="note_topics" name="note[topics]" type="text">
+
+  <% if @note.topics.length > 1%>
+    <h3>Delete an existing topic!</h3>
+
+    <% @note.topics.each do |note_topic| %>
+        | <%= link_to note_topic.topic, note_topic_path(@note, note_topic),
+                     method: :delete,
+                     data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    |
+  <% end %>
 
   <% if @note.note_contents.length > 1%>
     <h3>Delete an existing file!</h3>
@@ -20,7 +31,6 @@
                      data: { confirm: 'Are you sure?' } %>
     <% end %>
     |
-    
   <% end %>
 
   <h3>Add a new file!</h3>
