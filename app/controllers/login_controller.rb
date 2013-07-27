@@ -15,4 +15,12 @@ class LoginController < ApplicationController
 		reset_session
 		render 'index'
 	end
+
+	def index
+		if(session[:user_id].present?)
+			redirect_to user_path(User.find(session[:user_id]))
+		else
+			render 'index'
+		end
+	end
 end
