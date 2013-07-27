@@ -3,9 +3,11 @@
 		<a class="brand" href="#">Ournote</a>
 	<% else %>
     	<a class="brand" href=<%= user_path(session[:user_id]) %>>Ournote</a>
-      <div class="nav pull-left">
-        <%= render 'notes/search_bar' %>
-      </div>
+      <% unless @user.nil? %>
+        <div class="nav pull-left">
+          <%= render 'notes/search_bar' %>
+        </div>
+      <% end %>
   <% end %>
     
   <div class="nav pull-right">

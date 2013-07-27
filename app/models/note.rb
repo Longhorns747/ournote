@@ -11,7 +11,7 @@ class Note < ActiveRecord::Base
 	full_notes = Note.joins(:note_contents, :topics)
 
 	return full_notes.
-		where('topic LIKE ? OR c_name LIKE ? OR content_file_name LIKE ?', search_condition, search_condition, search_condition).
+		where('topic LIKE ? OR c_name LIKE ?', search_condition, search_condition).
 			group("id")
   end
 end
