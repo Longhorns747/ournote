@@ -3,7 +3,7 @@
 		<a class="brand" href="#">Ournote</a>
 	<% else %>
     	<a class="brand" href=<%= user_path(session[:user_id]) %>>Ournote</a>
-      <% unless @user.nil? %>
+      <% if session[:user_id].present? %>
         <div class="nav pull-left">
           <%= render 'notes/search_bar' %>
         </div>
@@ -11,8 +11,8 @@
   <% end %>
     
   <div class="nav pull-right">
-    <% unless @user.nil? %>
-      <%= link_to @user.username, user_path(@user), :class => 'brand' %>
+    <% if session[:user_id].present? %>
+      <%= link_to User.find(session[:user_id]).username, user_path(User.find(session[:user_id])), :class => 'brand' %>
       <%= link_to 'Logout', '/logout', :class => 'brand', data: { confirm: 'Are you sure?' } %>
     <% end %>
   </div>
