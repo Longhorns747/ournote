@@ -8,12 +8,10 @@
       </div>
   <% end %>
     
-  <ul class="nav pull-right">
+  <div class="nav pull-right">
     <% unless @user.nil? %>
-      <a class="brand" href="#"> <%= link_to @user.username, user_path(@user), :class => 'brand' %> </a>
-      <li>
-        <%= link_to 'Logout', '/logout', :class => 'brand', data: { confirm: 'Are you sure?' } %>
-      </li>
+      <%= link_to @user.username, user_path(@user), :class => 'brand' %>
+      <%= link_to 'Logout', '/logout', :class => 'brand', data: { confirm: 'Are you sure?' } %>
     <% end %>
-  </ul>
+  </div>
 </div>

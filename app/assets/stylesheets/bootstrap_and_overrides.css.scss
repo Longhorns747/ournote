@@ -2,6 +2,31 @@
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
+.navbar-inner {
+  background-color: #17A9F4; /* fallback color, place your own */
+
+  /* Gradients for modern browsers, replace as you see fit */
+  background-image: -moz-linear-gradient(top, #EEEEEE, #17A9F4);
+  background-image: -ms-linear-gradient(top, #EEEEEE, #17A9F4);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#EEEEEE), to(#17A9F4));
+  background-image: -webkit-linear-gradient(top, #EEEEEE, #17A9F4);
+  background-image: -o-linear-gradient(top, #EEEEEE, #17A9F4);
+  background-image: linear-gradient(top, #EEEEEE, #17A9F4);
+  background-repeat: repeat-x;
+
+  /* IE8-9 gradient filter */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEEEEE', endColorstr='#17A9F4', GradientType=0);
+}
+
+html, body {
+	background: #EEEEEE;
+}
+
+.navbar .brand {
+	color: #0000CC;
+	text-shadow: 0 1px 0 #DDDDDD;
+}
+
 .table th {
    text-align: center;   
 }
