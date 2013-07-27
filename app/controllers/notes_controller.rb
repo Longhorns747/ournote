@@ -74,4 +74,9 @@ class NotesController < ApplicationController
 			end
   		end
 	end
+
+	def search
+		@results = Note.search(params[:term])
+		render 'notes/search'
+	end
 end

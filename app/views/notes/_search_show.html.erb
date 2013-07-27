@@ -1,0 +1,20 @@
+<table class="table table-bordered">
+	<tr>
+		<th>Username</th>
+		<th>Class Name</th>
+		<th>Topics</th>
+		<th>Date</th>
+		<th>Files</th>
+	</tr>
+
+	
+	<% @results.each do |note| %>
+		<tr>
+			<td>
+				<%= User.find(note.user_id).username %>
+			</td>			
+
+			<%= render 'notes/show', :note => note %>
+		</tr>
+	<% end %>	
+</table>

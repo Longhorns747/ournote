@@ -17,7 +17,7 @@ class NoteContent < ActiveRecord::Base
     :s3_permissions => 'public-read'
 
     validates :content, :attachment_presence => true
-    validates_attachment_content_type :content, :content_type => ['image/png', 'image/jpg', 'image/pjpeg',
+    validates_attachment_content_type :content, :content_type => ['image/png', 'image/jpeg', 'image/pjpeg',
       'image/gif', 'text/plain', 'video/mpeg', 'video/mp4', 'video/quicktime', 'audio/mpeg', 'application/pdf']
 
     def get_filedate

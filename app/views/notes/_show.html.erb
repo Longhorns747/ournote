@@ -1,0 +1,24 @@
+<td>
+	<%= note.c_name %>
+</td>
+
+<td>
+	<% note.topics.each do |topic| %>
+		| <%= topic.topic %>
+	<% end %>
+	|
+</td>
+
+<td>
+	<% note.note_contents.each do |note_content| %>
+		| <%= note_content.get_filedate %>
+	<% end %>
+	|
+</td>
+
+<td>
+	<% note.note_contents.each do |note_content| %>
+		| <%= link_to note_content.content_file_name, note_content.content.url %>
+	<% end %>
+	|
+</td>

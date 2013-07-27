@@ -14,6 +14,8 @@ Ournote::Application.routes.draw do
     resources :topics
   end
   
+  get '/search', to: 'notes#search'
+  
   resources :login, only: [:create]
   get '/login', to: 'login#index'
   get '/logout', to: 'login#logout'

@@ -3,14 +3,17 @@
 		<a class="brand" href="#">Ournote</a>
 	<% else %>
     	<a class="brand" href=<%= user_path(session[:user_id]) %>>Ournote</a>
-    <% end %>
+      <div class="nav pull-left">
+        <%= render 'notes/search_bar' %>
+      </div>
+  <% end %>
     
-    <ul class="nav pull-right">
-      <% unless @user.nil? %>
-        <a class="brand" href="#"> <%= link_to @user.username, user_path(@user), :class => 'brand' %> </a>
-        <li>
-          <%= link_to 'Logout', '/logout', :class => 'brand', data: { confirm: 'Are you sure?' } %>
-        </li>
-      <% end %>
-    </ul>
+  <ul class="nav pull-right">
+    <% unless @user.nil? %>
+      <a class="brand" href="#"> <%= link_to @user.username, user_path(@user), :class => 'brand' %> </a>
+      <li>
+        <%= link_to 'Logout', '/logout', :class => 'brand', data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  </ul>
 </div>
