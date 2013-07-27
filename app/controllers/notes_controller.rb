@@ -61,7 +61,7 @@ class NotesController < ApplicationController
 			note_content = @note.note_contents.build(params[:note].permit(:content))
 
 			#Make sure we only save the file if it exists and is valid
-			if note_content.nil?
+			unless note_content.nil?
 				#If file is valid, save it, otherwise redirect with an error
 	  			if note_content.valid?
 	  				note_content.save
